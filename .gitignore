@@ -1,0 +1,7 @@
+.env
+*.env
+*.key
+secrets*
+config.ini
+gemini.env
+
