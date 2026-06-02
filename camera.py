@@ -8,8 +8,8 @@ camera.configure(camera_config)
 camera.start_preview(Preview.QTGL)
 
 while True:
-	camera.start()
 	cmd = input(">")
+	camera.start()
 	if cmd == "e":
 		camera.stop()
 		break
