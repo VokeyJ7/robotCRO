@@ -1,18 +1,33 @@
-from picamera2 import Picamera2, Preview
 from time import sleep 
 import time
+from PIL import Image
+import subprocess
 
-camera = Picamera2()
-camera_config = camera.create_preview_configuration()
-camera.configure(camera_config)
-camera.start_preview(Preview.QTGL)
+def visuals():
+	status = True
+	
 
-while True:
-	camera.start()
-	cmd = input(">")
-	if cmd == "e":
-		camera.stop()
-		break
-		
+	lens = subprocess.Popen([
+		"rpicam-hello",
+		"--timeout", "0"
+	
+	])
+	
+	return lens
+			
+			
+def capture():
+	
+	subprocess.run([
+		"rpicam-still", "-o", "scene.jpg",
+		"--width", "640",
+		"--height", "480",
+		"--timeout", "500"
+
+	])
+			
+			
+	image = Image.open("scene.jpg")
+	return image
 		
 
